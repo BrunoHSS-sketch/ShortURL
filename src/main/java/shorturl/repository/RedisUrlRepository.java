@@ -21,4 +21,7 @@ public class RedisUrlRepository implements UrlRepository{
     public String getOriginalUrl(String shortUrl) {
         return jedis.get(shortUrl);
     }
+
+    @Override
+    public Long incrementCounter() { return jedis.incr("counter"); }
 }
