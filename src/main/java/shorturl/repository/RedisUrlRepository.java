@@ -1,5 +1,7 @@
 package shorturl.repository;
 
+import redis.clients.jedis.Jedis;
+
 public class RedisUrlRepository implements UrlRepository{
 
     private Jedis jedis = new Jedis("localhost", 6379);
