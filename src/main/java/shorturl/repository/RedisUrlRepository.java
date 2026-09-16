@@ -1,10 +1,12 @@
 package shorturl.repository;
 
+import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
+@Repository
 public class RedisUrlRepository implements UrlRepository{
 
-    private Jedis jedis = new Jedis("localhost", 6379);
+    private Jedis jedis = new Jedis(System.getenv().getOrDefault("REDIS_HOST", "localhost"), 6379);
 
     @Override
     public void saveUrl(String originalUrl, String shortUrl) {

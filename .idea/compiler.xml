@@ -9,5 +9,6 @@
         <module name="encurtador" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="25" />
   </component>
 </project>

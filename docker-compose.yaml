@@ -1,7 +1,14 @@
-version: '3.8'
 services:
-  redis-database:
+  redis-banco:
     image: redis:alpine
     ports:
       - "6379:6379"
 
+  api-shorturl:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_HOST=redis-banco
+    depends_on:
+      - redis-banco

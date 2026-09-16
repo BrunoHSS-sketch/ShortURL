@@ -1,7 +1,9 @@
 package shorturl.service;
 
+import org.springframework.stereotype.Service;
 import shorturl.repository.UrlRepository;
 
+@Service
 public class UrlService {
 
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -12,6 +14,10 @@ public class UrlService {
     }
 
     public String shortenUrl(String originalUrl) {
+        if (originalUrl == null || originalUrl.isBlank()) {
+            throw new IllegalArgumentException("A URL original não pode estar vazia!");
+        }
+
         Long counter = urlRepository.incrementCounter();
         StringBuilder sb = new StringBuilder();
 
